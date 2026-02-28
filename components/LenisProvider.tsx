@@ -12,7 +12,6 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
       duration: 1.25,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      smoothTouch: false,
     });
 
     let raf = 0;
@@ -24,7 +23,6 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
 
     return () => {
       cancelAnimationFrame(raf);
-      // @ts-expect-error - lenis has destroy
       lenis.destroy?.();
     };
   }, []);
